@@ -1,0 +1,36 @@
+# Environment files
+.env
+.env.*
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+
+# Dependencies
+node_modules/
+backend/vendor/
+frontend/node_modules/
+
+# Build outputs
+backend/public/build/
+backend/public/hot
+frontend/dist/
+frontend/.vite/
+
+# Laravel/runtime caches and logs
+backend/storage/*.key
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Tooling caches
+backend/.phpunit.result.cache
+backend/.phpunit.cache/
