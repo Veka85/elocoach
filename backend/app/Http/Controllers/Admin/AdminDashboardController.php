@@ -26,17 +26,25 @@ class AdminDashboardController extends Controller
         // Revenue by month (last 6 months)
         // strftime() is SQLite's equivalent of MySQL's DATE_FORMAT()
         $monthlyRevenue = CoachingSession::where('status', 'completed')
-            ->where('scheduled_at', '>=', now()->subMonths(6))
-            ->selectRaw("strftime('%Y-%m', scheduled_at) as month, SUM(price) as revenue, COUNT(*) as sessions")
-            ->groupBy('month')
-            ->orderBy('month')
-            ->get();
+    ->where('scheduled_at', '>=', now()->subMonths(6))
+    ->selectRaw("
+        TO_CHAR(scheduled_at, 'YYYY-MM') as month,
+        SUM(price) as revenue,
+        COUNT(*) as sessions
+    ")
+    ->groupByRaw("TO_CHAR(scheduled_at, 'YYYY-MM')")
+    ->orderBy('month')
+    ->get();
 
-        // New users by week (last 4 weeks)
-        $weeklySignups = User::where('created_at', '>=', now()->subWeeks(4))
-            ->selectRaw("strftime('%Y-%W', created_at) as week, role, COUNT(*) as count")
-            ->groupBy('week', 'role')
-            ->get();
+$weeklySignups = User::where('created_at', '>=', now()->subWeeks(4))
+    ->selectRaw("
+        TO_CHAR(created_at, 'IYYY-IW') as week,
+        role,
+        COUNT(*) as count
+    ")
+    ->groupByRaw("TO_CHAR(created_at, 'IYYY-IW'), role")
+    ->orderBy('week')
+    ->get();
 
         // Top performing coaches
         $topCoaches = CoachProfile::with('user')
