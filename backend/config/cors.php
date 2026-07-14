@@ -17,6 +17,8 @@ return [
         env('FRONTEND_URL', 'http://localhost:5173'),
         'http://localhost:5173',
         'http://localhost:3000',
+    'https://incomparable-dodol-bf3d5f.netlify.app',
+        'https://vedrankovacevic.com',
     ],
 
     'allowed_origins_patterns' => [],
