@@ -29,7 +29,7 @@ const api = axios.create({
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
-  withCredentials: true, // Required for Sanctum cookie-based auth (if used)
+  withCredentials: false, // Required for Sanctum cookie-based auth (if used)
 });
 
 /**
