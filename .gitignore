@@ -34,3 +34,7 @@ Thumbs.db
 # Tooling caches
 backend/.phpunit.result.cache
 backend/.phpunit.cache/
+
+/.claude/
+/BUILD_LOG.md
+/README.md
